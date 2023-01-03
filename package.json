@@ -19,11 +19,12 @@
   },
   "cordova": {
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   },
   "dependencies": {
+    "@types/cordova": "^0.0.34",
     "typescript": "^4.9.4"
   }
 }
