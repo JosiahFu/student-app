@@ -15,6 +15,8 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
+ * 
+ * This file has been modified from its original licensed state.
  */
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
@@ -28,4 +30,4 @@ function onDeviceReady() {
     document.getElementById('deviceready')!.classList.add('ready');
 }
 
-export {};
+export {}; // Needed to prevent typescript warning messages
