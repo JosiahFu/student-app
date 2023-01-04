@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - ci-build-system # for testing
+
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Build
+        run: npm run build-linux
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-linux
+          path: # TODO
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Build
+        run: npm run build-windows
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-windows
+          path: # TODO
+  
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Build
+        run: npm run build-mac
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-mac
+          path: # TODO

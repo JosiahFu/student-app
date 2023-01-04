@@ -6,6 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && cordova build",
+    "build-linux": "tsc && cordova build electron --buildConfig=../build-linux.json",
+    "build-windows": "tsc && cordova build electron --buildConfig=../build-windows.json",
+    "build-mac": "tsc && cordova build electron --buildConfig=../build-mac.json",
     "test": "tsc && cordova run browser"
   },
   "keywords": [
