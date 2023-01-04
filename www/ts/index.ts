@@ -18,6 +18,21 @@
  * 
  * This file has been modified from its original licensed state.
  */
+ 
+const nav = document.getElementById('nav')!;
+const sections = document.getElementById('main')!.children;
+
+[...sections].forEach((e, i) => {
+    // e.id = e.id || 'section-' + (i + 1);
+    const link = document.createElement('div');
+    link.classList.add('section-button');
+    link.appendChild(document.createTextNode((<HTMLElement>e.getElementsByTagName('H2')[0]).innerText ?? 'unknown'));
+    link.onclick = () => {
+        [...sections].forEach(e => e.classList.remove('selected'));
+        e.classList.add('selected');
+    };
+    nav.appendChild(link);
+});
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
@@ -27,7 +42,5 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready')!.classList.add('ready');
+    // document.getElementById('deviceready')!.classList.add('ready');
 }
-
-export {}; // Needed to prevent typescript warning messages
