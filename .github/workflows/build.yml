@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-linux
-          path: # TODO
+          path: platforms/election/build/
 
   build-windows:
     runs-on: windows-latest
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-windows
-          path: # TODO
+          path: platforms/election/build/
   
   build-mac:
     runs-on: macos-latest
@@ -67,4 +67,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-mac
-          path: # TODO
+          path: platforms/election/build/
