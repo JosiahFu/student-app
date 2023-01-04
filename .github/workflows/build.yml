@@ -27,12 +27,17 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-linux
-          path: platforms/election/build/
-
+          path: platforms/electron/build
+  
   build-windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '2.7'
 
       - name: Install Packages
         run: npm install
@@ -47,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-windows
-          path: platforms/election/build/
+          path: platforms/electron/build
   
   build-mac:
     runs-on: macos-latest
@@ -67,4 +72,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-mac
-          path: platforms/election/build/
+          path: platforms/electron/build
