@@ -68,37 +68,37 @@ jobs:
   #         name: build-mac
   #         path: platforms/electron/build
 
-  build-android:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  # build-android:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
         
-      - name: Set up JDK 
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
+  #     - name: Set up JDK 
+  #       uses: actions/setup-java@v3
+  #       with:
+  #         java-version: '11'
+  #         distribution: 'temurin'
             
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
+  #     - name: Set up Android SDK
+  #       uses: android-actions/setup-android@v2
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+  #     - name: Setup Gradle
+  #       uses: gradle/gradle-build-action@v2
 
-      - name: Install Packages
-        run: npm install
+  #     - name: Install Packages
+  #       run: npm install
       
-      - name: Add Platform
-        run: node_modules/cordova/bin/cordova platform add android
+  #     - name: Add Platform
+  #       run: node_modules/cordova/bin/cordova platform add android
       
-      - name: Build
-        run: npm run build-android
+  #     - name: Build
+  #       run: npm run build-android
       
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-android
-          path: platforms/android/app/build/outputs/
+  #     - name: Upload Artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build-android
+  #         path: platforms/android/app/build/outputs/
 
   build-browser:
     runs-on: ubuntu-latest
@@ -112,7 +112,7 @@ jobs:
         run: node_modules/cordova/bin/cordova platform add browser
       
       - name: Build
-        run: cordova build browser
+        run: npm run build-browser
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
