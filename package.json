@@ -30,5 +30,8 @@
       "android",
       "electron"
     ]
+  },
+  "overrides": {
+    "electron-builder": "^23.0.3"
   }
 }

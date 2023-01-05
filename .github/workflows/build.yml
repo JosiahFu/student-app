@@ -59,8 +59,8 @@ jobs:
       #   with:
       #     python-version: '2.7'
       
-      - name: Python Patch
-        run: ln -sf python2 /usr/local/bin/python
+      # - name: Python Patch
+      #   run: ln -sf python2 /usr/local/bin/python
 
       - name: Install Packages
         run: npm install
