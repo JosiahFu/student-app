@@ -33,11 +33,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '2.7'
 
       - name: Install Packages
         run: npm install
@@ -58,6 +53,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '2.7'
 
       - name: Install Packages
         run: npm install
