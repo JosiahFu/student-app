@@ -77,6 +77,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
+            distribution: 'temurin'
             
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
@@ -111,7 +112,7 @@ jobs:
         run: node_modules/cordova/bin/cordova platform add browser
       
       - name: Build
-        run: npm run build-linux
+        run: cordova build browser
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
