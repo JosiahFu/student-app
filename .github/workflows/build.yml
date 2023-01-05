@@ -8,7 +8,98 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-linux:
+  # build-linux:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Install Packages
+  #       run: npm install
+      
+  #     - name: Add Platform
+  #       run: node_modules/cordova/bin/cordova platform add electron
+      
+  #     - name: Build
+  #       run: npm run build-linux
+      
+  #     - name: Upload Artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build-linux
+  #         path: platforms/electron/build
+  
+  # build-windows:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Install Packages
+  #       run: npm install
+      
+  #     - name: Add Platform
+  #       run: node_modules/cordova/bin/cordova platform add electron
+      
+  #     - name: Build
+  #       run: npm run build-windows
+      
+  #     - name: Upload Artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build-windows
+  #         path: platforms/electron/build
+  
+  # build-mac:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Install Packages
+  #       run: npm install
+      
+  #     - name: Add Platform
+  #       run: node_modules/cordova/bin/cordova platform add electron
+      
+  #     - name: Build
+  #       run: npm run build-mac
+      
+  #     - name: Upload Artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build-mac
+  #         path: platforms/electron/build
+
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Set up JDK 
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+            
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Add Platform
+        run: node_modules/cordova/bin/cordova platform add android
+      
+      - name: Build
+        run: npm run build-android
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-android
+          path: platforms/android/app/build/outputs/
+
+  build-browser:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +108,7 @@ jobs:
         run: npm install
       
       - name: Add Platform
-        run: node_modules/cordova/bin/cordova platform add electron
+        run: node_modules/cordova/bin/cordova platform add browser
       
       - name: Build
         run: npm run build-linux
@@ -25,53 +116,5 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build-linux
-          path: platforms/electron/build
-  
-  build-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Packages
-        run: npm install
-      
-      - name: Add Platform
-        run: node_modules/cordova/bin/cordova platform add electron
-      
-      - name: Build
-        run: npm run build-windows
-      
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-windows
-          path: platforms/electron/build
-  
-  build-mac:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      # - name: Setup python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '2.7'
-      
-      # - name: Python Patch
-      #   run: ln -sf python2 /usr/local/bin/python
-
-      - name: Install Packages
-        run: npm install
-      
-      - name: Add Platform
-        run: node_modules/cordova/bin/cordova platform add electron
-      
-      - name: Build
-        run: npm run build-mac
-      
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-mac
-          path: platforms/electron/build
+          name: build-browser
+          path: platforms/browser/www/
