@@ -67,6 +67,20 @@ main {
     grid-row: 2 / 3;
 }
 
+@media screen and (min-width: 600px) {
+    body {
+        grid-template-rows: auto auto 1fr;
+    }
+
+    nav {
+        grid-row: 2 / 3;
+    }
+
+    main {
+        grid-row: 3 / 4;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     :root {
         --theme-inner-gaps: var(--theme-inner-gaps-compact);
@@ -96,12 +110,7 @@ main {
 
     main {
         grid-column: 2 / 3;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .section-button {
-        font-size: 0.75em;
+        grid-row: 2 / 3;
     }
 }
 
