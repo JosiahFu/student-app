@@ -11,7 +11,8 @@
     "build-mac": "tsc && cordova build electron --release --buildConfig=../build-mac.json",
     "build-android": "tsc && cordova build android --release",
     "build-browser": "tsc && cordova build browser",
-    "test": "tsc && cordova run browser"
+    "test-browser": "tsc && cordova run browser",
+    "test-electron": "tsc && cordova run electron --nobuild"
   },
   "keywords": [
     "ecosystem:cordova"
