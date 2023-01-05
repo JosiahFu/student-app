@@ -3,7 +3,6 @@ name: Build
 on:
   push:
     branches:
-      - main
       - ci-build-system # for testing
 
   workflow_dispatch:
