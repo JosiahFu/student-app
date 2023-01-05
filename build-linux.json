@@ -1,0 +1,14 @@
+{
+    "electron": {
+        "linux": {
+            "package": [
+                "tar.gz",
+                "zip"
+            ],
+            "arch": [
+                "x64",
+                "arm64"
+            ]
+        }
+    }
+}

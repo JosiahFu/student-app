@@ -1,0 +1,77 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - ci-build-system # for testing
+
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Add Platform
+        run: node_modules/cordova/bin/cordova platform add electron
+      
+      - name: Build
+        run: npm run build-linux
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-linux
+          path: platforms/electron/build
+  
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Add Platform
+        run: node_modules/cordova/bin/cordova platform add electron
+      
+      - name: Build
+        run: npm run build-windows
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-windows
+          path: platforms/electron/build
+  
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      # - name: Setup python
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: '2.7'
+      
+      # - name: Python Patch
+      #   run: ln -sf python2 /usr/local/bin/python
+
+      - name: Install Packages
+        run: npm install
+      
+      - name: Add Platform
+        run: node_modules/cordova/bin/cordova platform add electron
+      
+      - name: Build
+        run: npm run build-mac
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-mac
+          path: platforms/electron/build
