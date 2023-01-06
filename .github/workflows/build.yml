@@ -120,7 +120,7 @@ jobs:
           path: platforms/android/app/build/outputs/
 
   build-ios:
-    runs-on: mac-latest
+    runs-on: macos-latest
     if: ${{ inputs.ios }}
     steps:
       - uses: actions/checkout@v3
