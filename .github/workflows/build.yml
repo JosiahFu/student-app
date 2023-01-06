@@ -121,7 +121,7 @@ jobs:
 
   build-ios:
     runs-on: mac-latest
-    if: ${{ inputs.android }}
+    if: ${{ inputs.ios }}
     steps:
       - uses: actions/checkout@v3
       
