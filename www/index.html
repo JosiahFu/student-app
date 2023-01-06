@@ -30,7 +30,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; connect-src http://47.144.142.202; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -55,6 +55,44 @@
             </section>
             <section>
                 <h2>Focus Mode</h2>
+            </section>
+            <section>
+                <h2>Server testing</h2>
+                <form id="login">
+                    <h3>Login</h3>
+                    <p>
+                        <label for="username">Username</label>
+                        <input name="username" type="text" required>
+                    </p>
+                    <p>
+                        <label for="password">Password</label>
+                        <input name="password" type="password" required>
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
+                <form id="add">
+                    <h3>Add Data</h3>
+                    <p>
+                        <label for="name">Name</label>
+                        <input name="name" type="text" required>
+                    </p>
+                    <p>
+                        <label for="value">Value</label>
+                        <input name="value" type="text" required>
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
+                <form id="get">
+                    <h3>Get Data</h3>
+                    <p>
+                        <label for="name">Name</label>
+                        <input name="name" type="text" placeholder="Optional">
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
             </section>
         </main>
         <script src="cordova.js"></script>

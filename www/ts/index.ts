@@ -21,6 +21,7 @@
  
 const nav = document.getElementById('nav')!;
 const sections = document.getElementById('main')!.children;
+const serverAddress = 'http://47.144.142.202';
 
 [...sections].forEach((e, i) => {
     // e.id = e.id || 'section-' + (i + 1);
@@ -33,6 +34,94 @@ const sections = document.getElementById('main')!.children;
     };
     nav.appendChild(link);
 });
+
+let authStr: string;
+
+interface LoginForm extends HTMLFormControlsCollection {
+    username: HTMLInputElement;
+    password: HTMLInputElement;
+    output: HTMLTextAreaElement;
+}
+
+document.getElementById('login')!.addEventListener('submit', event => {
+    const form = <HTMLFormElement>event.target;
+    const controlElements = <LoginForm>form.elements
+    fetch(serverAddress + '/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user: controlElements.username.value,
+            password: controlElements.password.value
+        })
+    })
+    .then((response) => {
+        // Handle the response
+        authStr = btoa(controlElements.username.value + ':' + controlElements.password.value);
+        response.text().then(e => controlElements.output.value = e);
+        setTimeout(() => form.style.display = 'none', 1000);
+    })
+    // .catch((error) => {
+    //     // Handle the error
+    // });
+    event.preventDefault();
+})
+
+interface AddForm extends HTMLFormControlsCollection {
+    name: HTMLInputElement;
+    value: HTMLInputElement;
+    output: HTMLTextAreaElement;
+}
+
+document.getElementById('add')!.addEventListener('submit', event => {
+    const form = <HTMLFormElement>event.target;
+    const controlElements = <AddForm>form.elements
+    fetch(serverAddress + '/data', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Basic ${authStr}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            [controlElements.name.value]: controlElements.value.value
+        })
+    })
+    .then((response) => {
+        // Handle the response
+        form.reset();
+        response.text().then(e => controlElements.output.value = e);
+    })
+    // .catch((error) => {
+    //     // Handle the error
+    // });
+    event.preventDefault();
+})
+
+interface GetForm extends HTMLFormControlsCollection {
+    name: HTMLInputElement;
+    output: HTMLTextAreaElement;
+}
+
+document.getElementById('get')!.addEventListener('submit', event => {
+    const form = <HTMLFormElement>event.target;
+    const controlElements = <GetForm>form.elements
+    fetch(serverAddress + '/data' + (controlElements.name.value == '' ? '' : '?path=' + controlElements.name.value), {
+        method: 'GET',
+        headers: {
+            'Authorization': `Basic ${authStr}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((response) => {
+        // Handle the response
+        response.text().then(e => controlElements.output.value = e);
+    })
+    // .catch((error) => {
+    //     // Handle the error
+    // });
+    event.preventDefault();
+})
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready

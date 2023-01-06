@@ -1,15 +1,28 @@
 name: Build
 
 on:
-  push:
-    branches:
-      - ci-build-system # for testing
-
   workflow_dispatch:
+    inputs:
+      electron-linux:
+        default: 'true'
+        type: boolean
+      electron-windows:
+        default: 'true'
+        type: boolean
+      electron-mac:
+        default: 'true'
+        type: boolean
+      android:
+        default: 'true'
+        type: boolean
+      browser:
+        default: 'true'
+        type: boolean
 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
+    if: ${{ inputs.electron-linux }}
     steps:
       - uses: actions/checkout@v3
 
@@ -30,6 +43,7 @@ jobs:
   
   build-windows:
     runs-on: windows-latest
+    if: ${{ inputs.electron-windows }}
     steps:
       - uses: actions/checkout@v3
 
@@ -50,6 +64,7 @@ jobs:
   
   build-mac:
     runs-on: macos-latest
+    if: ${{ inputs.electron-mac }}
     steps:
       - uses: actions/checkout@v3
 
@@ -70,6 +85,7 @@ jobs:
 
   build-android:
     runs-on: ubuntu-latest
+    if: ${{ inputs.android }}
     steps:
       - uses: actions/checkout@v3
         
@@ -102,6 +118,7 @@ jobs:
 
   build-browser:
     runs-on: ubuntu-latest
+    if: ${{ inputs.browser }}
     steps:
       - uses: actions/checkout@v3
 
