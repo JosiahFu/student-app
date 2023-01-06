@@ -16,7 +16,9 @@
         <icon src="res/icon-ios.png" width="120" height="120" />
     </platform>
     <platform name="electron">
-        <icon src="res/icon.png" />
-        <icon src="res/icon@2x.png" />
+        <icon src="res/icon.png" target="app" />
+        <icon src="res/icon@2x.png" target="app" />
+        <icon src="res/icon.png" target="installer" />
+        <icon src="res/icon@2x.png" target="installer" />
     </platform>
 </widget>
