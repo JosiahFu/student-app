@@ -56,6 +56,44 @@
             <section>
                 <h2>Focus Mode</h2>
             </section>
+            <section>
+                <h2>Server testing</h2>
+                <form id="login">
+                    <h3>Login</h3>
+                    <p>
+                        <label for="username">Username</label>
+                        <input name="username" type="text" required>
+                    </p>
+                    <p>
+                        <label for="password">Password</label>
+                        <input name="password" type="password" required>
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
+                <form id="add">
+                    <h3>Add Data</h3>
+                    <p>
+                        <label for="name">Name</label>
+                        <input name="name" type="text" required>
+                    </p>
+                    <p>
+                        <label for="value">Value</label>
+                        <input name="value" type="text" required>
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
+                <form id="get">
+                    <h3>Get Data</h3>
+                    <p>
+                        <label for="name">Name</label>
+                        <input name="name" type="text" placeholder="Optional">
+                    </p>
+                    <p><input type="submit"></p>
+                    <p><textarea disabled name="output"></textarea></p>
+                </form>
+            </section>
         </main>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
