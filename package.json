@@ -10,6 +10,7 @@
     "build-windows": "tsc && copy build-windows.json build.json && cordova platform add electron && cordova build electron --release",
     "build-mac": "tsc && cp build-mac.json build.json && cordova platform add electron && cordova build electron --release",
     "build-android": "tsc && cordova platform add android && cordova build android --release",
+    "build-ios": "tsc && cordova platform add ios && cordova build ios --release",
     "build-browser": "tsc && cordova platform add browser && cordova build browser",
     "test-browser": "tsc && cordova run browser",
     "test-electron": "tsc && cordova run electron --nobuild"

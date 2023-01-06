@@ -15,6 +15,9 @@ on:
       android:
         default: 'true'
         type: boolean
+      ios:
+        default: 'true'
+        type: boolean
       browser:
         default: 'true'
         type: boolean
@@ -99,6 +102,29 @@ jobs:
         with:
           name: build-android
           path: platforms/android/app/build/outputs/
+
+  build-ios:
+    runs-on: macos-latest
+    if: ${{ inputs.ios }}
+    steps:
+      - uses: actions/checkout@v3
+      
+      # - run: xcode-select --install
+      
+      - run: brew install ios-deploy
+
+      - run: sudo gem install cocoapods
+
+      - uses: bahmutov/npm-install@v1
+      
+      - name: Build
+        run: npm run build-ios
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-ios
+          path: platforms/ios/build
 
   build-browser:
     runs-on: ubuntu-latest
