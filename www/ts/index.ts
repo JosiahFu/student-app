@@ -21,7 +21,7 @@
  
 const nav = document.getElementById('nav')!;
 const sections = document.getElementById('main')!.children;
-const serverAddress = 'http://localhost:2323';
+const serverAddress = 'http://47.144.142.202';
 
 [...sections].forEach((e, i) => {
     // e.id = e.id || 'section-' + (i + 1);
