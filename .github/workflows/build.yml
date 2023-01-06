@@ -26,8 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Packages
-        run: npm install
+      - uses: actions/setup-node@v3
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add electron
@@ -47,8 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Packages
-        run: npm install
+      - uses: actions/setup-node@v3
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add electron
@@ -68,8 +66,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Packages
-        run: npm install
+      - uses: actions/setup-node@v3
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add electron
@@ -101,8 +98,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Install Packages
-        run: npm install
+      - uses: actions/setup-node@v3
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add android
@@ -122,8 +118,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Packages
-        run: npm install
+      - uses: actions/setup-node@v3
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add browser
