@@ -145,15 +145,15 @@ jobs:
         run: npm run build-ios
         if: always()
       
-      - name: Output
-        run: tree platforms/ios
-        if: always()
+      # - name: Output
+      #   run: tree platforms/ios
+      #   if: always()
       
-      # - name: Upload Artifacts
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: build-android
-      #     path: platforms/android/app/build/outputs/
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-ios
+          path: platforms/ios/build
 
   build-browser:
     runs-on: ubuntu-latest
