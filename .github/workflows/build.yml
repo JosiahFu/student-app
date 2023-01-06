@@ -125,29 +125,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - run: xcode-select --install
+      # - run: xcode-select --install
       
       - run: brew install ios-deploy
-        if: always()
 
       - run: sudo gem install cocoapods
-        if: always()
 
       - name: Install Packages
         run: npm install
-        if: always()
       
       - name: Add Platform
         run: node_modules/cordova/bin/cordova platform add ios
-        if: always()
       
       - name: Build
         run: npm run build-ios
-        if: always()
-      
-      # - name: Output
-      #   run: tree platforms/ios
-      #   if: always()
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
