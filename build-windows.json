@@ -3,7 +3,8 @@
         "windows": {
             "package": [
                 "zip",
-                "portable"
+                "portable",
+                "nsis"
             ],
             "arch": [ "x64" ]
         }

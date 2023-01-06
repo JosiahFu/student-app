@@ -6,11 +6,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && cordova build",
-    "build-linux": "tsc && cordova build electron --release --buildConfig=../build-linux.json",
-    "build-windows": "tsc && cordova build electron --release --buildConfig=../build-windows.json",
-    "build-mac": "tsc && cordova build electron --release --buildConfig=../build-mac.json",
-    "build-android": "tsc && cordova build android --release",
-    "build-browser": "tsc && cordova build browser",
+    "build-linux": "tsc && cp build-linux.json build.json && cordova platform add electron && cordova build electron --release",
+    "build-windows": "tsc && copy build-windows.json build.json && cordova platform add electron && cordova build electron --release",
+    "build-mac": "tsc && cp build-mac.json build.json && cordova platform add electron && cordova build electron --release",
+    "build-android": "tsc && cordova platform add android && cordova build android --release",
+    "build-browser": "tsc && cordova platform add browser && cordova build browser",
     "test-browser": "tsc && cordova run browser",
     "test-electron": "tsc && cordova run electron --nobuild"
   },
@@ -22,17 +22,10 @@
   "devDependencies": {
     "@types/cordova": "^0.0.34",
     "cordova": "^11.0.0",
-    "cordova-android": "^10.1.2",
-    "cordova-browser": "^6.0.0",
-    "cordova-electron": "^3.1.0",
     "typescript": "^4.9.4"
   },
   "cordova": {
-    "platforms": [
-      "browser",
-      "android",
-      "electron"
-    ]
+    "platforms": []
   },
   "overrides": {
     "electron-builder": "^23.0.3"
