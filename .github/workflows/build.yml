@@ -118,7 +118,7 @@ jobs:
 
   build-browser:
     runs-on: ubuntu-latest
-    if ${{ inputs.browser }}
+    if: ${{ inputs.browser }}
     steps:
       - uses: actions/checkout@v3
 
