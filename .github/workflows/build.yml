@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - uses: bahmutov/npm-install@v1
       
       - name: Build
         run: npm run build-linux
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - uses: bahmutov/npm-install@v1
       
       - name: Build
         run: npm run build-windows
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - uses: bahmutov/npm-install@v1
       
       - name: Build
         run: npm run build-mac
@@ -89,7 +89,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - uses: actions/setup-node@v3
+      - uses: bahmutov/npm-install@v1
       
       - name: Build
         run: npm run build-android
@@ -106,7 +106,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - uses: bahmutov/npm-install@v1
       
       - name: Build
         run: npm run build-browser
